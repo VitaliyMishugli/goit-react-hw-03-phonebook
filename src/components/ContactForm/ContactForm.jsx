@@ -34,7 +34,6 @@ export class ContactForm extends React.Component {
     }
     const handleSubmit = (values, { resetForm }) => {
       this.props.onSubmit(values);
-      console.log(values);
       resetForm();
     }
     return (
