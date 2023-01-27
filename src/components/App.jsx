@@ -17,11 +17,11 @@ export class App extends React.Component {
     filter: ''
   }
 
-  componentDidMount() {
-    this.setState({
-      contacts: JSON.parse(localStorage.getItem(LS_KEY))
-    })
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     contacts: JSON.parse(localStorage.getItem(LS_KEY))
+  //   })
+  // }
 
   componentDidUpdate(prevProps, prevState) {
     localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
@@ -72,8 +72,8 @@ export class App extends React.Component {
   render() {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
-    // const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
-    const visibleContacts =  contacts && contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+    const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+    // const visibleContacts =  contacts && contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
     return (
       <div>
         <h1>Phonebook 3</h1>
