@@ -1,14 +1,10 @@
-// ==========  Дата: 21.01 ============= 
-// ==========  Відео: Formik 26.00 ============
-// ==========  Виконання: навчився виводити в консоль value та actions форми ============
-
 import React from "react";
 import { nanoid } from 'nanoid';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
-
 import { ContactForm } from './ContactForm/ContactForm';
 
+const LS_KEY = 'contacts';
 
 export class App extends React.Component {
   state = {
@@ -21,6 +17,16 @@ export class App extends React.Component {
     filter: ''
   }
 
+  componentDidMount() {
+    this.setState({
+      contacts: JSON.parse(localStorage.getItem(LS_KEY))
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
+  }
+
   contactId = nanoid();
 
   formSubmitHandler = ({ name, number }) => {
@@ -28,10 +34,6 @@ export class App extends React.Component {
   }
 
   handleChange = event => {
-    // console.log(event.currentTarget);
-    // console.log(event.currentTarget.name);
-    // console.log(event.currentTarget.value);
-
     let { name, value } = event.currentTarget;
 
     this.setState({
