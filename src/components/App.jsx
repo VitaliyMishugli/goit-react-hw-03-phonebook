@@ -73,12 +73,13 @@ export class App extends React.Component {
     const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
     return (
       <div>
+        <h1>Phonebook 3</h1>
         <h2>Phonebook</h2>
         <ContactForm onAddContact={this.addContact} onSubmit={this.formSubmitHandler} />
 
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFitler} />
-        <ContactList visibleContacts={visibleContacts} contacts={contacts} onDeleteContact={this.deleteContact } />
+        <ContactList visibleContacts={visibleContacts} contacts={contacts} onDeleteContact={this.deleteContact} />
       </div>
     );
   }
