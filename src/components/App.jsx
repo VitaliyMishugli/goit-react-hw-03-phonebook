@@ -17,11 +17,11 @@ export class App extends React.Component {
     filter: ''
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     contacts: JSON.parse(localStorage.getItem(LS_KEY))
-  //   })
-  // }
+  componentDidMount() {
+    this.setState({
+      contacts: JSON.parse(localStorage.getItem(LS_KEY))
+    })
+  }
 
   componentDidUpdate(prevProps, prevState) {
     localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
