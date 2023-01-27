@@ -72,7 +72,16 @@ export class App extends React.Component {
   render() {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
-    const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+    let visibleContacts;
+    // const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+    if (contacts !== null) {
+      let  visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+    }
+    else {
+      this.setState = { contacts: [{ id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },] };
+      let visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+    }
+
     // const visibleContacts =  contacts && contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
     return (
       <div>
